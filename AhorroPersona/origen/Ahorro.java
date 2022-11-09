@@ -21,10 +21,7 @@ double mes= semana*4;        //mes= ahorro por mes
 double año= semana*12;       // año0 ahorro por año
 
 
-System.out.println("El ahorro anual es de: "+)
-
-
-		
+System.out.println("El ahorro anual de la persona es :"+ año );	
 	}
 
 }

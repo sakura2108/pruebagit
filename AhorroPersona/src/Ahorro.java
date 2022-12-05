@@ -20,8 +20,10 @@ double semana= sueldo*0.15;   // semana= ahorro por semana
 double mes= semana*4;        //mes= ahorro por mes    
 double año= semana*12;       // año0 ahorro por año
 
+System.out.println("El ahorro semnanal es de : " +semana);
+System.out.println("El ahorro mensual es de : " +mes);
+System.out.println("El ahorro anual es de: "+ año);
 
-System.out.println("El ahorro anual es de: "+)
 
 
 		

@@ -22,11 +22,11 @@ public class Cuentabancaria {
 	private String apellido;
 	private int numcuenta;
 	private int DNI;
-	private int saldoactual;
+	private double saldoactual;
 	private double cantidad;
 
 	
-	public void cuentabancaria( double cantidad,int numcuenta, int DNI, int saldoactual, String nombre, String apellido) {
+	public void cuentabancaria( double cantidad,int numcuenta, int DNI, double saldoactual, String nombre, String apellido) {
 		this.nombre=nombre;
 		this.apellido=apellido;	
 		this.numcuenta=numcuenta;
@@ -79,11 +79,11 @@ public class Cuentabancaria {
 		DNI = dNI;
 	}
 
-	public int getSaldoactual() {
+	public double getSaldoactual() {
 		return saldoactual;
 	}
 
-	public void setSaldoactual(int saldoactual) {
+	public void setSaldoactual(double saldoactual) {
 		this.saldoactual = saldoactual;
 	}
 	
@@ -113,7 +113,7 @@ public class Cuentabancaria {
 	
 	}
 	
-	public void ingresoSaldo(double cantidad) {
+	public void ingresoSaldo() {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Ingrese el saldo total que tiene su cuenta actualmente:");
 		this.setSaldoactual(sc.nextInt());
@@ -128,54 +128,57 @@ public class Cuentabancaria {
 		}else if(cantidad>0){
 		        this.cantidad += cantidad;
 		
-		double nuevo_monto;
-		nuevo_monto=this.saldoactual+this.cantidad;
+		double nuevoSaldo;
+		this.saldoactual=this.saldoactual+this.cantidad;
+		nuevoSaldo=this.saldoactual+this.cantidad;
 		
 		}
 	}
-	public void retirar(double cantidad){
+	public double retirar(double retiro){
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Indique el dinero que desae retirar:");
-		this.setCantidad(sc.nextDouble());
+		retiro=sc.nextDouble();
 		
-		if(this.saldoactual<this.cantidad) {
-			System.out.println("Saldo actual 0");
-			
+		if(this.saldoactual<retiro) {
+			System.out.println("Saldo actual insuficiente. Intente con un monto menor");
+			return 0;
 		}else {
 			
-			if (this.cantidad - cantidad<0){
-	            this.cantidad=0;
-	        }else {
-	            this.cantidad -= cantidad;
-	        }
-	    
-		}
-         //
-			double nuevo_monto;
-			nuevo_monto=this.saldoactual-this.cantidad;
-			
+			this.saldoactual=this.saldoactual-retiro;
+		double nuevoSaldo;
+		nuevoSaldo=this.saldoactual-retiro;
+              return nuevoSaldo;		
+			}
+        
 		}
 	
 	
-	public void extraccionRapido() {
+	public double extraccionRapido(double extraccion) {
 		Scanner sc= new Scanner(System.in);
-		System.out.println("Indique el dinero que desae retirar:");
-		this.setCantidad(sc.nextDouble());
+		System.out.println("Indique el dinero que desae retirar mediante una extraccion rapida, solo puede sacar un 20% de su saldo:");
+		extraccion=sc.nextDouble();
 		
-		double extraccion;
-		extraccion=this.saldoactual*0.20;
-		if(cantidad>extraccion) {
+		double nuevoSaldo;
+	
+		if(extraccion>saldoactual*0.20 ) {
 			System.out.println("Excede el monto permitido , intente con un monto menor");
-			
+			return 0;
 		}else {
-			System.out.println("ok");
+			System.out.println("Monto a retirar permitido");
+			this.saldoactual=this.saldoactual-extraccion;
+			
+			nuevoSaldo=this.saldoactual-extraccion;
+	              return nuevoSaldo;	
+			
+			//System.out.println("Monto a retirar :"+extraccion);
+			
 		}
 		
 		}
 	
 	public void consultarSaldo() {
-		if(){
-		System.out.println("Tu saldo actual ");
+		
+		System.out.println("Tu saldo actual "+saldoactual);
 	}
 	
 	public void mostrarDatos() {
@@ -183,6 +186,8 @@ public class Cuentabancaria {
 		System.out.println("El apellido del titular es :"+apellido);
 		System.out.println("El DNI del titular es :"+DNI);
 		System.out.println("El numero de cuenta es :"+numcuenta);
+	
+	
 		
 	}
 	} 

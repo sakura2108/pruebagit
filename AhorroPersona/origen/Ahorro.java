@@ -24,9 +24,13 @@ System.out.println("El ahorro semnanal es de : " +semana);
 System.out.println("El ahorro mensual es de : " +mes);
 System.out.println("El ahorro anual es de: "+ año);
 
+<<<<<<< HEAD:AhorroPersona/src/Ahorro.java
 
 
 		
+=======
+System.out.println("El ahorro anual de la persona es :"+ año );	
+>>>>>>> 176b6faab27317e8870d947ba2a71733a48092ef:AhorroPersona/origen/Ahorro.java
 	}
 
 }
